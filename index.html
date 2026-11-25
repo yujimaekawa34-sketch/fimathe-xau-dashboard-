@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080b10">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Fimathe XAU">
+  <title>Fimathe XAU Auto · Dashboard</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand"><div class="brand-mark">FX</div><div><div class="brand-name">FIMATHE <span>XAU AUTO</span></div><div class="brand-sub">CENTRAL DE MONITORAMENTO</div></div></div>
+      <div class="mode-pill"><span class="pulse"></span> PROTÓTIPO · DEMO</div>
+    </header>
+
+    <main>
+      <section class="hero-row">
+        <div><div class="eyebrow">CONTA / AMBIENTE</div><h1>Visão geral</h1><p class="subtext">XAUUSD · Day trading · painel local</p></div>
+        <div class="connection"><span class="dot amber"></span><div><b>Sem conexão</b><small>MT5 não conectado</small></div></div>
+      </section>
+
+      <section class="notice"><span class="notice-icon">!</span><div><b>Dados simulados</b><p>Esta versão não se conecta à Exness, ao MT5 ou a qualquer servidor. Botões e controles alteram apenas esta demonstração no navegador.</p></div></section>
+
+      <section class="metrics-grid">
+        <article class="metric"><div class="metric-label">SALDO <span class="info">ⓘ</span></div><div class="metric-value" id="balance">¥50,000</div><div class="metric-note">Conta demo ilustrativa</div></article>
+        <article class="metric"><div class="metric-label">EQUITY</div><div class="metric-value" id="equity">¥50,420</div><div class="metric-note" id="equity-note">+¥420 flutuante (sim.)</div></article>
+        <article class="metric"><div class="metric-label">P/L DO DIA</div><div class="metric-value positive" id="daypl">+¥420</div><div class="metric-note">Fechado + flutuante (sim.)</div></article>
+        <article class="metric"><div class="metric-label">DRAWDOWN</div><div class="metric-value" id="dd">0.84%</div><div class="metric-note">Valor de demonstração</div></article>
+      </section>
+
+      <section class="panel robot-panel">
+        <div class="panel-heading"><div><div class="eyebrow">EXECUÇÃO</div><h2>Estado do robô</h2></div><span class="status-chip stopped" id="robot-chip">SIMULADO · OFF</span></div>
+        <div class="robot-main"><div class="robot-state"><div class="robot-orb" id="robot-orb"><span>OFF</span></div><div><h3 id="robot-state-title">Robô pausado</h3><p id="robot-state-desc">Controle demonstrativo. Nenhuma ordem será enviada.</p></div></div><button id="toggleRobot" class="primary-btn">Ligar (simulação)</button></div>
+        <div class="divider"></div>
+        <div class="panel-heading"><div><div class="eyebrow">PROTEÇÃO</div><h2>Controle de emergência</h2></div></div>
+        <button id="stopBtn" class="danger-btn"><span>■</span> EMERGENCY STOP · DEMO</button>
+        <p class="small-note">O botão pausa a demonstração local. Não fecha posições nem bloqueia operações no MT5.</p>
+      </section>
+
+      <section class="panel"><div class="panel-heading"><div><div class="eyebrow">ESTRATÉGIA</div><h2>Último sinal</h2></div><span class="status-chip neutral">SIMULADO</span></div>
+        <div class="signal-card"><div class="signal-symbol">XAUUSD</div><div class="signal-direction"><span class="signal-tag buy">BUY</span><div><b>Reteste de zona</b><small>Exemplo ilustrativo · M5</small></div></div><div class="signal-levels"><div><span>Entrada</span><b>2,650.20</b></div><div><span>Stop</span><b>2,646.80</b></div><div><span>Alvo</span><b>2,657.00</b></div></div></div>
+        <div class="signal-foot"><span class="dot amber"></span> Sem sinal real — não representa análise atual de mercado.</div>
+      </section>
+
+      <section class="panel"><div class="panel-heading"><div><div class="eyebrow">POSIÇÕES</div><h2>Trades abertos</h2></div><span class="status-chip neutral">1 · SIMULADO</span></div>
+        <div class="trade-row"><div class="trade-left"><span class="trade-badge buy">BUY</span><div><b>XAUUSD</b><small>0.01 lot · Demo</small></div></div><div class="trade-right"><b class="positive">+¥420</b><small>Flutuante simulado</small></div></div>
+        <div class="trade-details"><span>Entrada: 2,650.20</span><span>SL: 2,646.80</span><span>TP: 2,657.00</span></div>
+        <p class="small-note">Esta posição foi criada apenas para ilustrar a interface.</p>
+      </section>
+
+      <section class="panel"><div class="panel-heading"><div><div class="eyebrow">GESTÃO</div><h2>Configurações de risco</h2></div><span class="status-chip neutral">LOCAL</span></div>
+        <div class="risk-grid"><label class="field"><span>Risco por trade (%)</span><div class="field-input"><input id="risk" type="number" min="0.1" max="3" step="0.1" value="0.5"><span>%</span></div><small>Limite demonstrativo: 3%</small></label>
+        <label class="field"><span>Limite de perda diária (%)</span><div class="field-input"><input id="dailyLimit" type="number" min="0.1" max="5" step="0.1" value="1.5"><span>%</span></div><small>Parâmetro de teste</small></label>
+        <label class="field"><span>Máximo trades / dia</span><div class="field-input"><input id="maxTrades" type="number" min="1" max="10" step="1" value="2"><span>trades</span></div></label>
+        <label class="field"><span>Filtro de spread</span><div class="field-input"><select id="spread"><option value="15">15 points</option><option value="20" selected>20 points</option><option value="25">25 points</option><option value="30">30 points</option></select></div></label></div>
+        <button id="saveRisk" class="secondary-btn">Salvar configurações (local)</button><span id="saveStatus" class="save-status"></span>
+      </section>
+
+      <section class="panel"><div class="panel-heading"><div><div class="eyebrow">REGISTRO</div><h2>Histórico demonstrativo</h2></div><span class="status-chip neutral">3 ENTRADAS</span></div>
+        <div class="history-list"><div class="history-row"><div><b>XAUUSD · BUY</b><small>Hoje · 10:42</small></div><span class="positive">+¥420</span></div><div class="history-row"><div><b>XAUUSD · SELL</b><small>Ontem · 14:15</small></div><span class="negative">−¥180</span></div><div class="history-row"><div><b>XAUUSD · BUY</b><small>Ontem · 09:30</small></div><span class="positive">+¥260</span></div></div>
+      </section>
+
+      <section class="panel"><div class="panel-heading"><div><div class="eyebrow">ALERTAS</div><h2>Status do sistema</h2></div><span class="status-chip neutral">LOCAL</span></div>
+        <div class="alert-list"><div class="alert-row"><span class="dot amber"></span><div><b>Bridge API</b><small>Não configurada</small></div></div><div class="alert-row"><span class="dot amber"></span><div><b>Autenticação</b><small>Não implementada</small></div></div><div class="alert-row"><span class="dot green"></span><div><b>Interface</b><small>Carregada neste dispositivo</small></div></div><div class="alert-row"><span class="dot amber"></span><div><b>Dados / alertas push</b><small>Simulados; push não configurado</small></div></div></div>
+      </section>
+
+      <footer><div class="footer-brand">FIMATHE XAU AUTO <span>· MVP 0.1</span></div><p>Protótipo de interface para testes. Não é um sistema de trading, não transmite ordens e não deve ser usado como base para decisões financeiras.</p><p id="lastUpdated">Atualizado: —</p></footer>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
